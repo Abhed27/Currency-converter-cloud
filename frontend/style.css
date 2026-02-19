@@ -1,0 +1,275 @@
+/* 🌍 WELCOME SCREEN FULL PAGE */
+.welcome-screen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+
+    background:linear-gradient(135deg,#000000,#0f2027,#203a43);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+
+    animation:fadeIn 1s ease;
+}
+
+/* Welcome Card */
+.welcome-box{
+    background:rgba(0,0,0,0.7);
+    backdrop-filter:blur(10px);
+    padding:50px;
+    border-radius:20px;
+    text-align:center;
+    color:white;
+    max-width:500px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.6);
+}
+
+.welcome-box h1{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.welcome-box p{
+    color:#ccc;
+    margin-bottom:25px;
+}
+
+/* START BUTTON */
+.start-btn{
+    padding:14px 28px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    color:white;
+
+    background:linear-gradient(90deg,#3aa0ff,#7b61ff);
+    transition:0.3s;
+}
+
+.start-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 15px rgba(123,97,255,0.6);
+}
+
+/* Hide main app initially */
+.hidden{
+    display:none;
+}
+
+/* Animation */
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* ===============================
+   🌍 GLOBAL RESET
+=================================*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* ===============================
+   🌍 BODY BACKGROUND + PARALLAX
+=================================*/
+body{
+    font-family: Arial, sans-serif;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    /* WORLD MAP BACKGROUND */
+    background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+        url("./worldmap.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+/* ===============================
+   🧠 MAIN LAYOUT
+=================================*/
+.main-layout{
+    display:flex;
+    gap:40px;
+    align-items:flex-start;
+}
+
+/* ===============================
+   📦 CONVERTER BOX
+=================================*/
+.container{
+    width:360px;
+    padding:30px;
+
+    background:rgba(20,20,20,0.85);
+    backdrop-filter:blur(15px);
+
+    border-radius:18px;
+    text-align:center;
+
+    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+    transition:0.3s;
+}
+
+.container:hover{
+    transform:translateY(-5px);
+}
+
+/* TITLE */
+.container h2{
+    color:#fff;
+    margin-bottom:20px;
+}
+
+/* ===============================
+   💰 INPUT FIELD
+=================================*/
+input{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    outline:none;
+    margin-bottom:20px;
+    font-size:16px;
+}
+
+/* ===============================
+   💱 CURRENCY ROW
+=================================*/
+.dropdown{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.select-container{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.select-container img{
+    width:30px;
+    height:20px;
+    object-fit:cover;
+    border-radius:3px;
+}
+
+select{
+    padding:5px;
+    border-radius:6px;
+    border:none;
+    outline:none;
+}
+
+/* ARROW ICON */
+.fa-arrow-right-arrow-left{
+    color:white;
+    font-size:18px;
+}
+
+/* ===============================
+   🔘 CONVERT BUTTON
+=================================*/
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+
+    background:linear-gradient(90deg,#42a5f5,#7e57c2);
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.03);
+    opacity:0.9;
+}
+
+/* RESULT TEXT */
+
+.msg,
+.msg span,
+#result,
+.result{
+    color:#ffffff !important;   /* 👈 force white color */
+    font-size:22px;
+    font-weight:bold;
+    text-align:center;
+    margin-top:18px;
+    text-shadow:0 0 8px rgba(255,255,255,0.6);
+}
+
+/* ===============================
+   📊 HISTORY PANEL
+=================================*/
+.history-panel{
+    width:420px;
+    background:rgba(20,20,20,0.85);
+    backdrop-filter:blur(15px);
+
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+.history-panel h3{
+    color:#fff;
+    margin-bottom:15px;
+}
+
+/* TABLE */
+.history-panel table{
+    width:100%;
+    border-collapse:collapse;
+    color:#fff;
+}
+
+.history-panel th,
+.history-panel td{
+    padding:10px;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.history-panel th{
+    color:#ddd;
+    font-weight:600;
+}
+
+/* ===============================
+   ✨ SMOOTH FADE ANIMATION
+=================================*/
+.container,
+.history-panel{
+    animation:fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}

@@ -143,7 +143,3 @@ Future cloud enhancements:
 B.Tech Cloud Computing Student
 
 ---
-
-## ⭐ If you like this project
-
-Give it a ⭐ on GitHub!

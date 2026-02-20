@@ -52,15 +52,15 @@ The goal of this project is to demonstrate:
 
 ## 📁 Project Structure
 
-currency-converter/
+currency-converter-cloud/
 │
-├── frontend/
-│ ├── index.html
-│ ├── style.css
-│ ├── script.js
-│ └── worldmap.jpg
+├── public/
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js
+│   ├── bg.png
+│   └── worldmap.jpg
 │
-└── backend/
 ├── index.js
 └── package.json
 
@@ -70,41 +70,36 @@ currency-converter/
 
 ### 1️⃣ Clone Repository
 
-cd currency-converter-cloud
+git clone https://github.com/Abhed27/Currency-converter-cloud.git
+cd Currency-converter-cloud
 
 ---
 
-### 2️⃣ Start Backend Server
-
-cd backend
+### 2️⃣ Start Server
 
 npm install
-
 npm start
----
 
-### 3️⃣ Start Frontend
-
-Open a new terminal:
-
-cd frontend
-
-npx live-server
+Server runs on:
+http://localhost:3000
 
 ---
+
+## 📸 Screenshots
+
 * Welcome Page
 * Currency Converter UI
 * Conversion History Panel
+
 ---
 
 ## ☁️ Cloud Architecture Idea
 
-This project is designed to be easily deployable on cloud platforms like:
+This project is unified and easily deployable on cloud platforms like:
 
 * AWS EC2
 * Render
-* Vercel (Frontend)
-* Netlify (Frontend)
+* Heroku
 
 Future cloud enhancements:
 
@@ -130,3 +125,7 @@ Future cloud enhancements:
 B.Tech Cloud Computing Student
 
 ---
+
+## ⭐ If you like this project
+
+Give it a ⭐ on GitHub!

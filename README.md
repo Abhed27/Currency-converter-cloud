@@ -70,8 +70,6 @@ currency-converter/
 
 ### 1️⃣ Clone Repository
 
-git clone https://github.com/YOUR-USERNAME/currency-converter-cloud.git
-
 cd currency-converter-cloud
 
 ---
@@ -83,11 +81,6 @@ cd backend
 npm install
 
 npm start
-
-Server runs on:
-
-http://localhost:3000
-
 ---
 
 ### 3️⃣ Start Frontend
@@ -99,15 +92,9 @@ cd frontend
 npx live-server
 
 ---
-
-## 📸 Screenshots
-
 * Welcome Page
 * Currency Converter UI
 * Conversion History Panel
-
-(Add screenshots later for a more professional GitHub look)
-
 ---
 
 ## ☁️ Cloud Architecture Idea

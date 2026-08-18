@@ -13,6 +13,36 @@ const fromFlag = document.getElementById("from-flag");
 const toFlag = document.getElementById("to-flag");
 
 /* ============================
+   🖱️ CUSTOM CURSOR
+=================================*/
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorGlow = document.querySelector('.cursor-glow');
+
+window.addEventListener('mousemove', (e) => {
+    cursorDot.style.left = `${e.clientX}px`;
+    cursorDot.style.top = `${e.clientY}px`;
+
+    // Add a slight delay to the glow for a smooth trailing effect
+    cursorGlow.animate({
+        left: `${e.clientX}px`,
+        top: `${e.clientY}px`
+    }, { duration: 500, fill: "forwards" });
+});
+
+window.addEventListener('mousedown', () => cursorGlow.classList.add('active'));
+window.addEventListener('mouseup', () => cursorGlow.classList.remove('active'));
+
+/* ============================
+   🌌 VANILLA TILT 3D EFFECT
+=================================*/
+VanillaTilt.init(document.querySelectorAll(".container, .history-panel"), {
+    max: 5,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.2,
+});
+
+/* ============================
    FLAG UPDATE (FAST + LOCAL)
 ============================ */
 
@@ -44,6 +74,19 @@ fromCurrency.addEventListener("change", updateFlags);
 toCurrency.addEventListener("change", updateFlags);
 
 /* ============================
+   SWAP BUTTON CLICK
+============================ */
+
+const swapBtn = document.getElementById("swap-btn");
+
+swapBtn.addEventListener("click", () => {
+  const temp = fromCurrency.value;
+  fromCurrency.value = toCurrency.value;
+  toCurrency.value = temp;
+  updateFlags();
+});
+
+/* ============================
    CONVERT BUTTON CLICK
 ============================ */
 
@@ -64,7 +107,7 @@ convertBtn.addEventListener("click", async () => {
 
     // ⭐ IMPORTANT — YOUR BACKEND URL
     const response = await fetch(
-      `http://localhost:3000/convert?from=${from}&to=${to}&amount=${amount}`
+      `/convert?from=${from}&to=${to}&amount=${amount}`
     );
 
     if (!response.ok) {
@@ -72,10 +115,32 @@ convertBtn.addEventListener("click", async () => {
     }
 
     const data = await response.json();
+    const finalResult = Number(data.result);
 
-    resultText.innerText = `${to} ${Number(data.result).toFixed(2)}`;
+    // 🔢 Number Counting Animation
+    let startValue = 0;
+    const duration = 1000; // 1 second
+    const startTime = performance.now();
 
-    addToHistory(from, to, amount, data.result);
+    function updateCount(currentTime) {
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
+        
+        // Easing function (easeOutExpo)
+        const easeOut = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        const currentValue = startValue + (finalResult - startValue) * easeOut;
+
+        resultText.innerText = `${to} ${currentValue.toFixed(2)}`;
+
+        if (progress < 1) {
+            requestAnimationFrame(updateCount);
+        } else {
+            resultText.innerText = `${to} ${finalResult.toFixed(2)}`;
+            addToHistory(from, to, amount, data.result);
+        }
+    }
+    
+    requestAnimationFrame(updateCount);
 
   } catch (err) {
     console.log(err);
